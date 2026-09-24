@@ -201,39 +201,28 @@ if uploaded_image is not None:
                 features
             )
 
+            # Convert Windows path to Linux-compatible path
+            result_image_path = filenames[index_pos].replace('\\', '/')
+
             # Celebrity name
             predicted_actor = os.path.basename(
-                os.path.dirname(
-                    filenames[index_pos]
-                )
+                os.path.dirname(result_image_path)
             ).replace('_', ' ')
 
             # Display
             col1, col2 = st.columns(2)
 
             with col1:
-
-                st.header(
-                    'Your uploaded image'
-                )
-
+                st.header('Your uploaded image')
                 st.image(
                     display_image,
                     use_container_width=True
                 )
 
             with col2:
-
-                st.header(
-                    "Seems like " + predicted_actor
-                )
-
+                st.header("Seems like " + predicted_actor)
                 st.image(
-                    filenames[index_pos],
+                    result_image_path,
                     width=300
                 )
-
-                st.write(
-                    f"Similarity: {score:.2%}"
-                )
-
+                st.write(f"Similarity: {score:.2%}")
