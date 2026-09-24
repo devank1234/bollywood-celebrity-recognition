@@ -215,8 +215,7 @@ if uploaded_image is not None:
             with col1:
                 st.header('Your uploaded image')
                 st.image(
-                    display_image,
-                    use_container_width=True
+                    display_image
                 )
 
             with col2:
